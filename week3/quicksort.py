@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
 from sys import exit
-from typing import List, Tuple
+from typing import List
 from statistics import median
 
 
@@ -10,7 +10,7 @@ def main():
     parser.add_argument("file", help="file with integers")
     args = vars(parser.parse_args())
 
-    # Read file and add integers to a set
+    # Read file and add integers to a list
     try:
         with open(args["file"], "r") as file:
             intList: List[int] = [int(line) for line in file]
@@ -27,7 +27,7 @@ def main():
     print(f"Number of comparisons made: {quickSort(intList, option)[1]}")
 
 
-def quickSort(intList: List[int], option: int):
+def quickSort(intList: List[int], option: int) -> Tuple[List[int], int]:
     length = len(intList)
     if length <= 1:
         return intList, 0
@@ -42,7 +42,7 @@ def quickSort(intList: List[int], option: int):
     return intList, leftComparisons + rightComparisons + length - 1
 
 
-def choosePivot(intList: List[int], option: int):
+def choosePivot(intList: List[int], option: int) -> int:
     listLength = len(intList)
     middlePosition = (listLength // 2) - 1 if listLength % 2 == 0 else listLength // 2
 
@@ -63,7 +63,7 @@ def choosePivot(intList: List[int], option: int):
         exit(f"Option {option} is invalid!")
 
 
-def partition(intList: List[int]):
+def partition(intList: List[int]) -> Tuple[List[int], int]:
     pivot = intList[0]
     i = 1
 

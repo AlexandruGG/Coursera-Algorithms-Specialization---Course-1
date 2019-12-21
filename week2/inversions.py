@@ -10,7 +10,7 @@ def main():
     parser.add_argument("file", help="file with integers")
     args = vars(parser.parse_args())
 
-    # Read file and add integers to a set
+    # Read file and add integers to a list
     try:
         with open(args["file"], "r") as file:
             intList: List[int] = []
